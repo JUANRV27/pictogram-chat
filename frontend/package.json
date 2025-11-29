@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "private": true,
+  "homepage": "https://JUANRV27.github.io/pictogram-chat",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

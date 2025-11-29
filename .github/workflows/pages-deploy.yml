@@ -1,4 +1,4 @@
-name: Build and deploy React app to GitHub Pages
+name: Build and deploy React (Vite) app to GitHub Pages
 
 on:
   push:
@@ -13,6 +13,10 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,15 +29,15 @@ jobs:
       - name: Cache node modules
         uses: actions/cache@v4
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: frontend/node_modules
+          key: ${{ runner.os }}-node-frontend-${{ hashFiles('frontend/**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-node-frontend-
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build (Create React App output -> build/)
+      - name: Build (Vite -> frontend/dist)
         run: npm run build
         env:
           CI: false
@@ -41,7 +45,7 @@ jobs:
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v1
         with:
-          path: build
+          path: frontend/dist
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v1

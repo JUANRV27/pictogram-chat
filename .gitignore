@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 backend/venv/
 venv/
-
+backend/.env
 
 # Node
 node_modules/

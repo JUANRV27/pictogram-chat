@@ -1,11 +1,12 @@
 {
   "name": "frontend",
+  "homepage": "https://JUANRV27.github.io/pictogram-chat",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base /pictogram-chat/",
     "lint": "eslint .",
     "preview": "vite preview"
   },

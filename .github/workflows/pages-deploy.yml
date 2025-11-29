@@ -13,6 +13,10 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    # <-- agregamos el environment aquí
+    environment:
+      name: github-pages
+
     defaults:
       run:
         working-directory: frontend

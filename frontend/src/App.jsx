@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import PictogramSelector from "./components/PictogramSelector";
 import SentenceBuilder from "./components/SentenceBuilder";
 import RecommendedPictograms from "./components/RecommendedPictograms";
+import ChatApp from "./components/ChatApp";
 import "./App.css";
 
 export default function App() {
+  const [mode, setMode] = useState("sentence"); // "sentence" or "chat"
   const [sentence, setSentence] = useState([]);
   const [recommended, setRecommended] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -63,10 +65,28 @@ export default function App() {
     setSentence(newSentence);
   };
 
+  // Render chat mode
+  if (mode === "chat") {
+    return (
+      <div>
+        <div className="mode-toggle">
+          <button onClick={() => setMode("sentence")} className="btn-secondary">
+            ← Volver al Constructor de Oraciones
+          </button>
+        </div>
+        <ChatApp />
+      </div>
+    );
+  }
+
+  // Render sentence builder mode
   return (
     <div className="app-container">
       <div className="app-header">
         <h1>Pictogram Chat</h1>
+        <button onClick={() => setMode("chat")} className="btn-primary">
+          💬 Ir al Chat
+        </button>
       </div>
 
       <SentenceBuilder sentence={sentence} onRemove={removePictogram} />

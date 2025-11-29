@@ -1,2 +1,11 @@
 fastapi
 uvicorn
+sqlalchemy
+websockets
+pydantic[email]
+requests
+transformers
+torch
+bitsandbytes
+accelerate
+psycopg2-binary

@@ -21,7 +21,8 @@ export default function MessageInput({ onSend, recommendationApi }) {
     const fetchRecommendations = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:8000/recommend`, {
+        const BACKEND_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+        const res = await fetch(`${BACKEND_URL}/recommend`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

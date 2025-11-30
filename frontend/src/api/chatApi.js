@@ -1,5 +1,5 @@
 // API base URL - uses environment variable in production, localhost in development
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const API_URL = import.meta.env.VITE_API_URL;
 
 // Auth API functions
 export const authApi = {
@@ -132,6 +132,8 @@ export const chatApi = {
   },
 
   createWebSocket(roomId, token) {
-    return new WebSocket(`ws://localhost:8000/chat/ws/${roomId}?token=${token}`);
+    // Convert http/https to ws/wss
+    const WS_URL = API_URL.replace(/^http/, 'ws');
+    return new WebSocket(`${WS_URL}/chat/ws/${roomId}?token=${token}`);
   }
 };

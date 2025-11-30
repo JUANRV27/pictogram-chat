@@ -1,11 +1,15 @@
+# Core FastAPI
 fastapi
 uvicorn
+
+# Database
 sqlalchemy
+psycopg2-binary
+
+# Utilities
 websockets
 pydantic[email]
 requests
-transformers
-torch
-bitsandbytes
-accelerate
-psycopg2-binary
+
+# ML (solo para N-gram, muy ligero)
+# numpy no se necesita para N-gram (usa solo pickle y collections)

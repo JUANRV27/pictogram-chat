@@ -1,0 +1,7 @@
+{
+  "total_evaluated": 100,
+  "top1_accuracy": 15.0,
+  "top5_accuracy": 43.0,
+  "top12_accuracy": 53.0,
+  "timestamp": "1764490441.965648"
+}

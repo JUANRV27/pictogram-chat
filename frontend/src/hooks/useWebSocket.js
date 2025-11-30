@@ -8,7 +8,11 @@ export default function useWebSocket(roomId, token, onMessage) {
   useEffect(() => {
     if (!roomId || !token) return;
 
-    const ws = new WebSocket(`ws://localhost:8000/chat/ws/${roomId}?token=${token}`);
+    // Build WebSocket URL from API URL (convert http/https to ws/wss)
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+    const WS_URL = API_URL.replace(/^http/, 'ws');
+    
+    const ws = new WebSocket(`${WS_URL}/chat/ws/${roomId}?token=${token}`);
     wsRef.current = ws;
 
     ws.onopen = () => {

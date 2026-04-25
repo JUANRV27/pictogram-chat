@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routers.recommend import router as recommend_router
 from app.routers.chat import router as chat_router
 from app.routers.auth import router as auth_router
+from app.routers.quiz import router as quiz_router
 from app.core.database import init_db
 
 app = FastAPI()
@@ -27,6 +28,7 @@ def startup_event():
 app.include_router(recommend_router)
 app.include_router(auth_router)
 app.include_router(chat_router)
+app.include_router(quiz_router)
 
 from app.core.arasaac import search_pictograms
 

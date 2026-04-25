@@ -4,3 +4,5 @@
 
 * Se hizo uso de un modelo de IA ligero que permite predecir el siguente pictograma que el usuario puede hacer uso.
 * Fue construido con React + Vite (Frontend) y Next.js (Backend)
+
+Link del proyecto : **https://juanrv27.github.io/pictogram-chat/**

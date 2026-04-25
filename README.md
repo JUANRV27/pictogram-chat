@@ -1,4 +1,4 @@
-#Pictochat - Proyecto univerisitario 
+# Pictochat - Proyecto univerisitario 
 * Pictochat es un proyecto enfocado en ayudar a personas con dificultad para comunicarse. 
 * Haciendo uso de pictogramas de ARASAACse facilita la comunicación y el entenidimiento a las personas que no tengan conocimiento de los pictogramas
 

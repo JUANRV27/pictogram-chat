@@ -1,0 +1,5 @@
+[
+  { "id": 1, "word": "yo", "image": "/pictos/yo.png" },
+  { "id": 2, "word": "quiero", "image": "/pictos/quiero.png" },
+  { "id": 3, "word": "comer", "image": "/pictos/comer.png" }
+]

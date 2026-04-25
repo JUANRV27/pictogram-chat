@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 
 interface AuthFormProps {
-  onLogin: (token: string, username: string) => void;
+  onLogin: (token: string, user: any) => void;
 }
 
 export const AuthForm = ({ onLogin }: AuthFormProps) => {
@@ -53,7 +53,14 @@ export const AuthForm = ({ onLogin }: AuthFormProps) => {
 
       if (isLogin) {
         // backend returns { token, user }
-        onLogin(data.token, data.user?.username || username);
+        const user = data.user || { username };
+        try {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(user));
+        } catch (e) {
+          // ignore storage errors
+        }
+        onLogin(data.token, user);
         toast({ title: "¡Bienvenido! 👋" });
       } else {
         toast({ title: "Registro exitoso", description: "Ahora puedes iniciar sesión" });
@@ -71,7 +78,12 @@ export const AuthForm = ({ onLogin }: AuthFormProps) => {
       return;
     }
     // Generate a fake token for guest
-    onLogin("guest-token", username + " (Invitado)");
+    const guest = { id: `guest-${username}`, username: username + " (Invitado)" };
+    try {
+      localStorage.setItem("token", "guest-token");
+      localStorage.setItem("user", JSON.stringify(guest));
+    } catch (e) {}
+    onLogin("guest-token", guest);
     toast({ title: "¡Bienvenido Invitado! 👋" });
   };
 

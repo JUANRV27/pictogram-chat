@@ -25,9 +25,14 @@ const Chat = () => {
   const [quizLoading, setQuizLoading] = useState(false);
   const [score, setScore] = useState(0);
 
-  const handleLogin = (t: string, u: string) => {
+  const handleLogin = (t: string, u: any) => {
     setToken(t);
-    setUsername(u);
+    const usernameVal = typeof u === 'string' ? u : u?.username;
+    setUsername(usernameVal);
+    try {
+      localStorage.setItem('token', t);
+      localStorage.setItem('user', JSON.stringify(typeof u === 'string' ? { username: u } : u));
+    } catch (e) {}
   };
 
   const fetchPictograms = async (text: string) => {

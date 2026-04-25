@@ -8,9 +8,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // https://vitejs.dev/config/
-const isGithubPages = process.env.GITHUB_PAGES === 'true';
+
 export default defineConfig(() => ({
-  base: isGithubPages ? "/pictogram-chat/" : '/',
+  base: process.env.NODE_ENV === 'production'
+    ? '/pictogram-chat/'
+    : '/',
   server: {
     host: "::",
     port: 8080,

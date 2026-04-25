@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 // https://vitejs.dev/config/
 const isGithubPages = process.env.GITHUB_PAGES === 'true';
 export default defineConfig(() => ({
-  base: isGithubPages ? '/pictogram-chat/' : '/',
+  base: isGithubPages ? "/pictogram-chat/" : '/',
   server: {
     host: "::",
     port: 8080,

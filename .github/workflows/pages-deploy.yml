@@ -39,6 +39,7 @@ jobs:
         run: npm run build
         env:
           CI: false
+          GITHUB_PAGES: "true"
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v4

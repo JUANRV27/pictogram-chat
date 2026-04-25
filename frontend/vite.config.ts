@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
+  base: "/pictogram-chat/",
   server: {
     host: "::",
     port: 8080,
